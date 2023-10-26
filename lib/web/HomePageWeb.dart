@@ -59,7 +59,7 @@ class HomePageWeb extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Container(
                 height: MediaQuery.of(context).size.height * 0.6,
-                width: MediaQuery.of(context).size.width * 0.7,
+                width: MediaQuery.of(context).size.width * 0.8,
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 223, 217, 217),
                   borderRadius: BorderRadius.circular(12.0),

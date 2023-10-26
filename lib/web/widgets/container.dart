@@ -13,7 +13,7 @@ class CustomWalletWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 35.w,
-      height: 10.h,
+      height: 25.h,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
