@@ -13,7 +13,7 @@ class User {
   DateTime createdAt;
   DateTime updatedAt;
   int v;
-  String token;
+  String? token;
 
   User({
     required this.id,
@@ -30,7 +30,7 @@ class User {
     required this.createdAt,
     required this.updatedAt,
     required this.v,
-    required this.token,
+    this.token,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(

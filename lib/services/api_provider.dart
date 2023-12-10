@@ -38,17 +38,36 @@ class ApiProvider{
 
   Future<Map<String, dynamic>> get(String endPoint) async {
     try {
-      // GetStorage sr = GetStorage();
-      // String? token = sr.read('token');
-      // print(token);
-      // _dio.options.headers.addAll({'Authorization': 'Token $token'});
-
+      GetStorage sr = GetStorage();
+      String? token = sr.read('token');
+      print("token $token");
+      _dio.options.headers.addAll({'authorization': token});
       final Response response = await _dio.get(
         endPoint,
       );
-      print(response);
+      print(response.data);
 
-      final Map<String, dynamic> responseData = classifyResponse(response);
+      final responseData = classifyResponse(response);
+      return responseData;
+    } on DioError catch (err) {
+      print(err);
+      return {};
+    }
+  }
+
+  Future<Map<String, dynamic>> delete(String endPoint,Map<String, dynamic> body) async {
+    try {
+      GetStorage sr = GetStorage();
+      String? token = sr.read('token');
+      print("token $token");
+      _dio.options.headers.addAll({'authorization': token});
+      final Response response = await _dio.delete(
+        endPoint,
+        data: body,
+      );
+      print(response.data);
+
+      final responseData = classifyResponse(response);
       return responseData;
     } on DioError catch (err) {
       print(err);
@@ -65,7 +84,7 @@ class ApiProvider{
       String? token = sr.read('token');
       print(token ?? "");
       if (token != null) {
-        _dio.options.headers.addAll({'Authorization': 'Token $token'});
+        _dio.options.headers.addAll({'authorization': token});
       }
       final Response response = await _dio.post(
         endPoint,
@@ -89,7 +108,7 @@ class ApiProvider{
       GetStorage sr = GetStorage();
       String? token = sr.read('token');
       print(token ?? "");
-      _dio.options.headers.addAll({'Authorization': 'Token $token'});
+      _dio.options.headers.addAll({'authorization': token});
       print("starting dio");
       final Response response = await _dio.put(
         endPoint,

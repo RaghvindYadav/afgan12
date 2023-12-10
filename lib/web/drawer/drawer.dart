@@ -2,6 +2,8 @@ import 'package:afghan_net/Afgan_List_UI/internet_bundle/vpn_plans/vpn_all.dart'
 import 'package:afghan_net/Afgan_List_UI/status/dialog_box.dart';
 import 'package:afghan_net/App_DrawerContents/reseller_management.dart';
 import 'package:afghan_net/catagory.dart';
+import 'package:afghan_net/controllers/user_controller.dart';
+import 'package:afghan_net/screens/admin_management.dart';
 import 'package:afghan_net/web/HomePageWeb.dart';
 import 'package:afghan_net/web/catagory/catagory.dart';
 import 'package:afghan_net/web/order_page.dart';
@@ -11,6 +13,8 @@ import 'package:afghan_net/widgets/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../modal/user.dart';
+
 class All_Drawer_Web extends StatelessWidget {
   const All_Drawer_Web({
     super.key,
@@ -18,12 +22,14 @@ class All_Drawer_Web extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userController = Get.find<UserController>();
+    final User user = userController.user;
     return Drawer(
       child: ListView(
         padding: const EdgeInsets.all(0),
         children: [
-          const UserAccountsDrawerHeader(
-            decoration: BoxDecoration(
+          UserAccountsDrawerHeader(
+            decoration: const BoxDecoration(
               color: Colors.blue,
               image: DecorationImage(
                 image: AssetImage("assets/drawerback.jpeg"),
@@ -33,16 +39,16 @@ class All_Drawer_Web extends StatelessWidget {
             accountName: Padding(
               padding: EdgeInsets.only(top: 25),
               child: Text(
-                "Abhishek Mishra",
-                style: TextStyle(fontSize: 18),
+                "${user.firstName} ${user.lastName}",
+                style: const TextStyle(fontSize: 18),
               ),
             ),
-            accountEmail: Text("abhishekm977@gmail.com"),
+            accountEmail: Text(user.email!),
             currentAccountPictureSize: Size.square(50),
             currentAccountPicture: CircleAvatar(
               child: Text(
-                "A",
-                style: TextStyle(fontSize: 30.0),
+                user.firstName[0],
+                style:const TextStyle(fontSize: 30.0),
               ),
             ),
           ),
@@ -93,6 +99,13 @@ class All_Drawer_Web extends StatelessWidget {
             title: const Text(' Reseller management '),
             onTap: () {
               Get.to(() => Reseller());
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.manage_accounts),
+            title: const Text(' Admin management '),
+            onTap: () {
+              Get.to(() => AdminManagement());
             },
           ),
           ListTile(

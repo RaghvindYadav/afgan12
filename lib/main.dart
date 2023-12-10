@@ -1,5 +1,6 @@
 import 'package:afghan_net/home_page.dart';
 import 'package:afghan_net/login.dart';
+import 'package:afghan_net/screens/admin_management.dart';
 import 'package:afghan_net/splash.dart';
 import 'package:afghan_net/web/HomePageWeb.dart';
 
@@ -31,16 +32,16 @@ class MyApp extends StatelessWidget {
   }
 
   Widget _buildHomePage(double screenWidth, DeviceType deviceType) {
-    if (screenWidth < 400 || deviceType == DeviceType.mobile) {
+    // if (screenWidth < 400 || deviceType == DeviceType.mobile) {
+    //   return Splash();
+    // } else if (screenWidth < 400) {
+    //   return Splash();
+    // } else if (screenWidth >= 700 && screenWidth < 1024) {
+    //   return Splash();
+    // } else if (screenWidth >= 1024 && screenWidth <= 1920) {
+    //   return Splash();
+    // } else {
       return Splash();
-    } else if (screenWidth < 400) {
-      return Splash();
-    } else if (screenWidth >= 700 && screenWidth < 1024) {
-      return Splash();
-    } else if (screenWidth >= 1024 && screenWidth <= 1920) {
-      return Splash();
-    } else {
-      return Splash();
-    }
+    // }
   }
 }

@@ -9,7 +9,7 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("splash");
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 1), () {
       GetStorage sr = GetStorage();
       final token = sr.read('token');
       print(token);
