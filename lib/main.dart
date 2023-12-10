@@ -1,4 +1,5 @@
 import 'package:afghan_net/home_page.dart';
+import 'package:afghan_net/login.dart';
 import 'package:afghan_net/splash.dart';
 import 'package:afghan_net/web/HomePageWeb.dart';
 
@@ -33,13 +34,13 @@ class MyApp extends StatelessWidget {
     if (screenWidth < 400 || deviceType == DeviceType.mobile) {
       return Splash();
     } else if (screenWidth < 400) {
-      return HomePage();
+      return Splash();
     } else if (screenWidth >= 700 && screenWidth < 1024) {
-      return HomePageWeb();
+      return Splash();
     } else if (screenWidth >= 1024 && screenWidth <= 1920) {
-      return HomePageWeb();
+      return Splash();
     } else {
-      return HomePage();
+      return Splash();
     }
   }
 }
