@@ -1,7 +1,9 @@
 import 'package:afghan_net/Afgan_List_UI/internet_bundle/vpn_plans/vpn_all.dart';
 import 'package:afghan_net/Afgan_List_UI/status/dialog_box.dart';
 import 'package:afghan_net/catagory.dart';
+import 'package:afghan_net/controllers/user_controller.dart';
 import 'package:afghan_net/order.dart';
+import 'package:afghan_net/web/drawer/drawer.dart';
 import 'package:afghan_net/widgets/tab_navigate.dart';
 import 'package:afghan_net/widgets/text.dart';
 import 'package:afghan_net/widgets/transaction.dart';
@@ -24,6 +26,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userController = Get.find<UserController>();
+    userController.getUser();
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -57,7 +61,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       key: _scaffoldKey,
-      drawer: All_Drawer(),
+      drawer: All_Drawer_Web(),
       body: SingleChildScrollView(
         child: Column(children: [
           SizedBox(

@@ -1,4 +1,7 @@
+import 'package:afghan_net/controllers/user_controller.dart';
+import 'package:afghan_net/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,6 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   late Size mediaSize;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final userController = Get.put(UserController());
   bool rememberUser = false;
 
   @override
@@ -144,9 +148,14 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildLoginButton() {
     return ElevatedButton(
-      onPressed: () {
+      onPressed: () async {
         debugPrint("Email : ${emailController.text}");
         debugPrint("Password : ${passwordController.text}");
+        await userController.userLogin(email: emailController.text,pass: passwordController.text);
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
       },
       style: ElevatedButton.styleFrom(
         shape: const StadiumBorder(
